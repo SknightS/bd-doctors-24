@@ -1,6 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    <?php include ('connection.php')?>
+    <?php include ('connection.php');
+    extract($_GET);
+    extract($_POST);
+    ?>
+
 <!-- Mirrored from themes.codexcoder.com/theboss/blog_single_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Dec 2016 05:57:28 GMT -->
 <head>
         <meta charset="utf-8">
@@ -80,7 +84,7 @@
 								<div class="single-blog-box-img">
 									<img src="images/blog-page-two-1.jpg" alt="" />
 								</div>
-                                <?php $sql="SELECT * FROM `blog` WHERE `id` = 1";
+                                <?php $sql="SELECT * FROM `blog` WHERE `id` = '$id'";
                                         $result=mysqli_query($con,$sql);
                                 while ($row=mysqli_fetch_array($result)){
                                 ?>
