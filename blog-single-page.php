@@ -149,7 +149,7 @@
                                     $result1=mysqli_query($con,$sql1);
                                     while ($row1=mysqli_fetch_array($result1)){
                                     ?>
-									<li><a href="all_categories.php"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><span><?php echo $row1['category']?> </span><span class="category-post-count"><?php echo $row1['count_cate']?> </span></a></li>
+									<li><a href="all_categories.php?cg=<?php echo $row1['category']?>"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><span><?php echo $row1['category']?> </span><span class="category-post-count"><?php echo $row1['count_cate']?> </span></a></li>
 									<?php
                                     }
                                     ?>
@@ -169,7 +169,7 @@
                                             while ($row2=mysqli_fetch_array($result2)) {
                                                 ?>
 
-                                                <a href="#" class="latest-news-title"><?php echo $row2['b_title'] ?></a><br>
+                                                <a href="blog-single-page.php?id=<?php echo $row2['id']?>" class="latest-news-title"><?php echo $row2['b_title'] ?></a><br>
                                                 <span class="post-date"><a href="#"></a><?php echo $row2['date'] ?></span>
 
                                                 <?php

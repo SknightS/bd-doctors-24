@@ -1,5 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
+<?php include ('connection.php');
+extract($_POST);
+extract($_GET);
+?>
 
 <head>
         <meta charset="utf-8">
@@ -75,31 +79,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="row">
+                        <?php
+                        $sql="select * from blog";
+                        $result=mysqli_query($con,$sql);
+                        while ($row=mysqli_fetch_array($result)) {?>
 
 						<div class="col-sm-4 col-xs-12">
 							<div class="single-blog-box">
-								<div class="single-blog-box-img">
-									<a href="blog-single-page.php"><img src="images/home-blog-one.jpg" alt="" /></a>
-								</div>
-								<div class="blog-content">
-									<h3><a href="blog-single-page.php">Disctively parallel task magnetic </a></h3>
-									<div class="post-meta">
-										<span><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>July 12, 2016</span>
-										<span><i class="fa fa-user" aria-hidden="true"></i><a href="#">Robot Smith</a></span>
-									</div>
-									<div class="post-excerpt">
-										<p>Pluoresntly customize pranci plcentered  customer service and strategic amerials. Interacvely cordinate performe</p>
-									</div>
-								</div>
-								<div class="read-more-box">
-									<a href="blog-single-page.php" class="read-more">read more<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-									<div class="comment-count">
-										<span class="comment-number">2</span>
-										<span class="flaticon-interface"></span>
-									</div>
-								</div>
+
+
+                                    <div class="single-blog-box-img">
+                                        <a href="blog-single-page.php?id=<?php echo $row['id']?>"><img src="images/home-blog-one.jpg" alt=""/></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-single-page.php?id=<?php echo $row['id']?>"><?php echo $row['b_title']?></a></h3>
+                                        <div class="post-meta">
+                                            <span><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><?php echo $row['date']?></span>
+                                            <span><i class="fa fa-user" aria-hidden="true"></i><a
+                                                        href="#"><?php echo $row['post_by']?></a></span>
+                                        </div>
+<!--                                        <div class="post-excerpt">-->
+<!--                                            <p>--><?php //echo $row['m_content']?><!--</p>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <div class="read-more-box">
+                                        <a href="blog-single-page.php?id=<?php echo $row['id']?>" class="read-more">read more<i
+                                                    class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                        <div class="comment-count">
+                                            <span class="comment-number">2</span>
+                                            <span class="flaticon-interface"></span>
+                                        </div>
+                                    </div>
+
 							</div>
 						</div>
+                <?php
+                }
+                ?>
 
 
 
