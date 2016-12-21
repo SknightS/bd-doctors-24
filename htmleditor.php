@@ -11,9 +11,9 @@
         <textarea name="editor1"></textarea>
 <input type="submit" name="submit" value="submit">
     </form >
-        <script>
-            CKEDITOR.replace( 'editor1' );
-        </script>
+    <script>
+        CKEDITOR.replace( 'editor1' );
+    </script>
     </body>
 </html>
 <?php

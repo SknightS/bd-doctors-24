@@ -3,6 +3,14 @@
 <?php include ('connection.php');
 extract($_POST);
 extract($_GET);
+
+
+$num_rec_per_page=2;
+
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $num_rec_per_page;
+//$sql = "SELECT * FROM blog LIMIT $start_from, $num_rec_per_page";
+//$rs_result = mysqli_query ($con,$sql); //run the query
 ?>
 
 <head>
@@ -80,7 +88,7 @@ extract($_GET);
 				<div class="row">
 					<div class="row">
                         <?php
-                        $sql="select * from blog";
+                        $sql="select * from blog LIMIT $start_from, $num_rec_per_page";
                         $result=mysqli_query($con,$sql);
                         while ($row=mysqli_fetch_array($result)) {?>
 
@@ -89,7 +97,7 @@ extract($_GET);
 
 
                                     <div class="single-blog-box-img">
-                                        <a href="blog-single-page.php?id=<?php echo $row['id']?>"><img src="images/home-blog-one.jpg" alt=""/></a>
+                                        <a href="blog-single-page.php?id=<?php echo $row['id']?>"><img src="images/<?php echo $row['f_image']?>" alt="" /></a>
                                     </div>
                                     <div class="blog-content">
                                         <h3><a href="blog-single-page.php?id=<?php echo $row['id']?>"><?php echo $row['b_title']?></a></h3>
@@ -98,9 +106,9 @@ extract($_GET);
                                             <span><i class="fa fa-user" aria-hidden="true"></i><a
                                                         href="#"><?php echo $row['post_by']?></a></span>
                                         </div>
-<!--                                        <div class="post-excerpt">-->
-<!--                                            <p>--><?php //echo $row['m_content']?><!--</p>-->
-<!--                                        </div>-->
+                                        <div class="post-excerpt">
+                                            <p><?php echo $row['short_note']?></p>
+                                        </div>
                                     </div>
                                     <div class="read-more-box">
                                         <a href="blog-single-page.php?id=<?php echo $row['id']?>" class="read-more">read more<i
@@ -123,8 +131,22 @@ extract($_GET);
 				<div class="row">
 					<div class="pagination-div">
 						<ul class="pagination">
+                            <?php
+                            $sql = "SELECT * FROM blog";
+                            $rs_result = mysqli_query($con,$sql); //run the query
+                            $total_records = mysqli_num_rows($rs_result);  //count number of records
+                            $total_pages = ceil($total_records / $num_rec_per_page);
+
+                            echo "<a href='health-blog.php?page=1'>".'|<'."</a> "; // Goto 1st page
+
+                            for ($i=1; $i<=$total_pages; $i++) {
+                                echo "<a href='health-blog.php?page=".$i."'>".$i."</a> ";
+                            };
+                            echo "<a href='health-blog.php?page=$total_pages'>".'>|'."</a> "; // Goto last page
+                            ?>
+
 							<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-							<li class="active"><a href="#">1</a></li>
+							<li class="active"><a href="">1</a></li>
 							<li><a href="#">2</a></li>
 							<li><a href="#">3</a></li>
 							<li><a href="#" class="pagination-dot-dot">...</a></li>

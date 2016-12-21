@@ -81,13 +81,15 @@
 					<div class="col-md-9">
 						<div class="blog-style-two">
 							<div class="single-blog-box single-full-blog">
-								<div class="single-blog-box-img">
-									<img src="images/blog-page-two-1.jpg" alt="" />
-								</div>
+
                                 <?php $sql="SELECT * FROM `blog` WHERE `id` = '$id'";
                                         $result=mysqli_query($con,$sql);
                                 while ($row=mysqli_fetch_array($result)){
                                 ?>
+
+                                    <div class="single-blog-box-img">
+                                        <img src="images/<?php echo $row['f_image']?>" alt="" />
+                                    </div>
 
 								<div class="blog-content">
 									<h3><?php echo $row['b_title']?></h3>
