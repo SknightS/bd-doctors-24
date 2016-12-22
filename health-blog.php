@@ -1,8 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <?php include ('connection.php');
+error_reporting(0);
 extract($_POST);
 extract($_GET);
+
+session_start();
 
 
 $num_rec_per_page=2;
@@ -113,10 +116,14 @@ $start_from = ($page-1) * $num_rec_per_page;
                                     <div class="read-more-box">
                                         <a href="blog-single-page.php?id=<?php echo $row['id']?>" class="read-more">read more<i
                                                     class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+
+                                       <?php if($_SESSION['a_name']!=null){?>
                                         <div class="comment-count">
-                                            <span class="comment-number">2</span>
-                                            <span class="flaticon-interface"></span>
+                                           <a href="update_blog.php?id=<?php echo $row['id']?>"><button>Edit</button></a>
+                                            <a href="delete_blog.php?id=<?php echo $row['id']?>"><button>Delete</button></a>
+
                                         </div>
+                                        <?php }?>
                                     </div>
 
 							</div>
