@@ -25,6 +25,8 @@ include('connection.php');
                 }
                 ?>
             </select><br>
+            Doctor Degree: <input class="form-control" type="text" name="d_degree" value="<?php echo $row['d_degree']?>"><br>
+            Short Description: <input class="form-control" type="text" name="d_detail" value="<?php echo $row['d_detail']?>"><br>
             Hospital: <select class="form-control" name="hosp" >
                 <option selected="selected" value="<?php echo $row['d_hospital']?>"><?php echo $row['d_hospital']?></option>
                 <?php
@@ -38,6 +40,9 @@ include('connection.php');
                 }
                 ?>
             </select><br>
+            Chamber: <input class="form-control" type="text" name="d_chamber" value="<?php echo $row['d_chamber']?>"><br>
+            Fees (New): <input class="form-control" type="text" name="d_fees_np" value="<?php echo $row['d_fees_np']?>"><br>
+            Fees (Return): <input class="form-control" type="text" name="d_fees_rp" value="<?php echo $row['d_fees_rp']?>"><br>
             Contact Number: <input class="form-control" type="text" name="cnum" value="<?php echo $row['d_contact']?>"><br>
             District: <select class="form-control"  name="dst" >
                 <option selected="selected" value="<?php echo $row['d_district']?>"><?php echo $row['d_district']?></option>

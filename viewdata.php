@@ -15,7 +15,12 @@ $result=mysqli_query($con, $sql);
         <th>SL</th>
         <th>Doctor name</th>
         <th>Speciality</th>
+        <th>Degree</th>
+        <th>Short Desc.</th>
         <th>Hospital</th>
+        <th>Chamber</th>
+        <th>Fees (New)</th>
+        <th>Fees (Return)</th>
         <th>Contact Number</th>
         <th>District</th>
         <th>P/S</th>
@@ -33,7 +38,12 @@ $result=mysqli_query($con, $sql);
             <td><?php echo $count; ?></td>
             <td><?php echo $row['d_name'] ?></td>
             <td><?php echo $row['d_spciality']?></td>
+            <td><?php echo $row['d_degree']?></td>
+            <td><?php echo $row['d_detail']?></td>
             <td><?php echo $row['d_hospital']?></td>
+            <td><?php echo $row['d_chamber']?></td>
+            <td><?php echo $row['d_fees_np']?></td>
+            <td><?php echo $row['d_fees_rp']?></td>
             <td><?php echo $row['d_contact']?></td>
             <td><?php echo $row['d_district']?></td>
             <td><?php echo $row['d_ps']?></td>

@@ -3,17 +3,18 @@
 include ('connection.php');
 error_reporting(0);
 extract($_POST);
-extract($_GET);
 
 
 switch($_REQUEST['Submitinfo']) {
 
     case 'Submit Doctor':
+	 
+	 echo 1;
 
         $fileName = $_FILES["d_image"]["name"];
         move_uploaded_file($_FILES["d_image"]["tmp_name"], "images/" . $fileName);
 
-        $sql = "INSERT INTO `doctor_info`(`d_name`, `d_spciality`, `d_hospital`, `d_contact`, `d_district`, `d_ps`, `d_image`, `d_type`) VALUES ('$dname','$spec','$hosp','$cnum','$dst3','$ps','$fileName','')";
+        $sql = "INSERT INTO `doctor_info`(`d_name`, `d_spciality`, `d_degree`, `d_detail`, `d_hospital`, `d_chamber`, `d_fees_np`, `d_fees_rp`, `d_contact`, `d_district`, `d_ps`, `d_image`, `d_type`) VALUES ('$dname','$spec', '$d_degree', '$d_detail', '$hosp', '$d_chamber', '$d_fees_np', '$d_fees_rp', '$cnum','$dst3','$ps','$fileName','$d_type')";
 
         if ($result = mysqli_query($con, $sql)) {
 
@@ -180,6 +181,52 @@ switch($_REQUEST['Submitinfo']) {
 
 
             }}
+        break;
+
+
+    case 'Register as Doctor':
+
+        echo 2;
+
+        $fileName = $_FILES["d_image"]["name"];
+        move_uploaded_file($_FILES["d_image"]["tmp_name"], "images/" . $fileName);
+
+        $sql = "INSERT INTO `doctor_for_appv`(`d_name`, `d_spciality`, `d_degree`, `d_detail`, `d_hospital`, `d_chamber`, `d_fees_np`, `d_fees_rp`, `d_contact`, `d_district`, `d_ps`, `d_image`, `d_status`) VALUES ('$dname','$spec', '$d_degree', '$d_detail', '$hosp', '$d_chamber', '$d_fees_np', '$d_fees_rp', '$cnum','$dst3','$ps','$fileName','pending')";
+
+        if ($result = mysqli_query($con, $sql)) {
+
+            ?>
+
+            <script>
+                alert('Data Inserted Successfully');
+                window.location = "doctor-database.php";
+            </script>
+
+            <?php
+
+        }
+        break;
+
+    case 'Register as User':
+
+        echo 2;
+
+
+
+        $sql = "INSERT INTO `newuser`(`name`, `age`, `email`, `phonenumber`) VALUES ('$name','$age','$email','$pnumber')";
+
+        if ($result = mysqli_query($con, $sql)) {
+
+            ?>
+
+            <script>
+                alert('Data Inserted Successfully');
+                window.location = "doctor-database.php";
+            </script>
+
+            <?php
+
+        }
         break;
     }
 ?>

@@ -64,8 +64,9 @@
                                     <li><a href="about-us.php">About Us</a></li>		
                                     <li><a href="find-doctor.php">Find Doctor</a></li>	
                                     <li><a href="health-blog.php">Health Blog</a></li>	
-                                    <li><a href="contact.php">Contact</a></li>	
-                                    <?php 
+                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="registration.php">Registration</a></li>
+                                      <?php
 		
 										if ($_SESSION['a_name']==NULL)
 										{ ?> <li><a href="admin-login.php">Login</a></li> <?php	} ?>                                    						
@@ -80,6 +81,8 @@
                                   </span></a>
 								  <ul class="dropdown-menu">
 									<li><a href="doctor-database.php">Doctor Database</a></li>
+                                      <li><a href="doctor-approve.php">Doctor Approve</a></li>
+                                      <li><a href="User-Database.php">User Database</a></li>
                                     <li><a href="logout.php">Logout</a></li>								
 								  </ul>                                		  		
 								</li> <?php	} ?>						

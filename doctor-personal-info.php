@@ -68,19 +68,7 @@
 			<?php include ('header.php'); ?>
 		</header>
 		<!-- End Header Section -->
-		<!-- Breadcrumb Section -->
-		<section class="breadcrumb-section section">
-			<div class="container">
-				<div class="breadcrumb-area">
-					<h2 class="breadcrumb-title">Doctor Details</h2>
-					<ul class="breadcrumb-ul">
-					  <li><a href="#">Home</a></li>
-					  <li class="active-breadcrumb">Doctor</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-		<!-- End Breadcrumb Section -->	
+
 		<!-- Single Team Member Details Section -->	
 		<section class="section single-team-member-details-section">
 			<div class="container">
@@ -88,16 +76,18 @@
 					<div class="single-team-member-details">
 						<div class="row">
 							<div class="member-full-information">
-								<div class="col-md-6 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="member-full-pic row">
-										<img src="images/<?php echo $row['d_image']?>" alt="" />
+										<img width="250" src="images/<?php echo $row['d_image']?>" alt="" />
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-12">
+								<div class="col-md-9 col-sm-12">
 									<div class="member-full-bio row">
 										<div class="member-info">
-											<h3><?php echo $row['d_name']?></h3>
+											<h3><?php echo $row['d_name']?></h3><br>
 											<h4><?php echo $row['d_spciality']?> Specialist</h4>
+                                            <h4><?php echo $row['d_hospital']?></h4>
+                                            <h4><?php echo $row['d_degree']?></h4>
 										</div>
 
                                         <?php
@@ -119,36 +109,19 @@
 
                                         <?php } ?>
 
-                                        <p>Energistically actualize mission-critical opportunities for onetoone ecommerce.
-										Holisticly communicate bleeding-edge PSD content rather than crossa platform eservices. Conveniently utilize diverse leadership an skills whereas state of the Continually coordinate flexible innovation after web-enabled customer service. Synergistically optimize resource maximizing data and efficient methods the a Distinctively iterate one to one action.</p>
-										<div class="social-icon">
-											<ul>
-												<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-											</ul>
-										</div>
-										<div class="clear-fix"></div>
+                                        <p><?php echo $row['d_detail']?></p>
+
+										<div class="clear-fix"></div><br>
 										<div class="contact-info">
 											<ul>
-												<li><i class="fa fa-home" aria-hidden="true"></i><span> <?php echo $row['d_ps']?>, <?php echo $row['d_district']?> </span></li>
-												<li><i class="fa fa-phone" aria-hidden="true"></i><span> <?php echo $row['d_contact']?></span></li>
-												<li><i class="fa fa-hospital-o" aria-hidden="true"></i><span> <?php echo $row['d_hospital']?></span></li>
+												<li><i class="fa fa-map-marker" aria-hidden="true"></i><span> <b>Chamber:</b><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['d_chamber']?>, <?php echo $row['d_ps']?>, <?php echo $row['d_district']?> </span></li>
+												<li><i class="fa fa-phone" aria-hidden="true"></i><span><b>Contact:</b> <?php echo $row['d_contact']?></span></li>		
+                                                <li><i class="fa fa-money" aria-hidden="true"></i>
+<span> <b>Fees: </b><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Patient: <?php echo $row['d_fees_np']?> TK. <?php if ($row['d_fees_rp'] != "") { ?><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returning Patient: <?php echo $row['d_fees_rp']?> TK. <?php } ?> </span></li>									
 											</ul>
 										</div>										
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="personal-statement">
-									<h3>Personal Statement</h3>
-									<p>Quickly syndicate innovative relationships vis-a-vis synergistic experiences. Energistically re-engineer leveraged deliverables rather than arevolutionary scenarios. Energistically reconceptualize andmaterials whereas user-centric total linkage. Quickly fashion equity invested bandwidth and client-centered Dramatically engage visionary quality vectors through top-line opportunities. Assertively transform market-driven convergence visextensible intellectual capital. Intrinsicly drive premier processes and transparent metrics. Rapidiously leverage existing scalable ROI vivis cross-platform benefits. Interactively plagiarize client-based channels via distinctive leadership skills.</p>
-									<p>Distinctively disintermediate proactive applications for go forward imperatives. Holisticly build exceptional applications rather than maintainable solutions. Phosfluorescently extend cutting-edge architectures before magnetic applications. Appropriately enhance installed base e-tailers with cross-unit e-business. Synergistically reintermediate tactical technology without distributed information.</p>
-								</div>							
 							</div>
 						</div>
 					</div>

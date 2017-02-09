@@ -177,28 +177,28 @@
 
                         if ($spec != NULL && $dst != NULL && $ps != NULL && $hosp != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_ps` = '$ps' AND `d_hospital` = '$hosp'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_ps` = '$ps' AND `d_hospital` = '$hosp' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($spec != NULL && $dst != NULL && $ps != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_ps` = '$ps'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_ps` = '$ps' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($spec != NULL && $dst != NULL && $hosp != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_hospital` = '$hosp'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' AND `d_hospital` = '$hosp' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($spec != NULL && $ps != NULL && $hosp != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_ps` = '$ps' AND `d_hospital` = '$hosp'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_ps` = '$ps' AND `d_hospital` = '$hosp' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
@@ -225,48 +225,48 @@
 
 					    else if ($spec != NULL && $dst != NULL ) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_district` = '$dst' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
 						}
 
 						else if ($spec != NULL && $ps != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec'  AND `d_ps` = '$ps'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec'  AND `d_ps` = '$ps' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($spec != NULL && $hosp != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_hospital` = '$hosp'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' AND `d_hospital` = '$hosp' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($spec != NULL ) {
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_spciality` = '$spec' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                       }
 
 						else if ($dst != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_district` = '$dst'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_district` = '$dst' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($ps != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_ps` = '$ps'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_ps` = '$ps' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
 
                         else if ($hosp != NULL) {
 
-                            $sql2="SELECT * FROM `doctor_info` WHERE `d_hospital` = '$hosp'" ;
+                            $sql2="SELECT * FROM `doctor_info` WHERE `d_hospital` = '$hosp' ORDER BY d_type DESC" ;
                             $result2=mysqli_query($con, $sql2);
                             $result3=mysqli_query($con, $sql2);
                         }
@@ -279,19 +279,33 @@
 						else {
 							
 							while ($row=mysqli_fetch_array($result2)){
+
+
 				?>
                             
-                            <div class="row">
-                            	<div class="col-md-2" >
-                                	<img class="img-responsive img-circle" style="border:3px solid #b3d4fc" width="110" src="images/<?php echo $row['d_image']?>">
+                            <div class="row" style="border:1px solid #4d4d4d; <?php if ($row['d_type'] == 'Featured') { ?> background: #F7E7CE; <?php } ?> padding:0px 20px 0px 20px ;">
+                            	<div class="col-md-1" style="height:180px; padding-left:0" ><br>
+                                	<img class="img-responsive img-circle" style="border:3px solid #b3d4fc; " width="150" src="images/<?php echo $row['d_image']?>"><br>
+                                    <?php if ($row['d_type'] == 'Featured') { ?>
+                                        <p style="font-size: 11px; text-align: center">Top Doctor</p>
+                                    <?php } ?>
                                 </div>
                                 
-                                <div class="col-md-4">
-                                	<h2><?php echo $row['d_name'] ?></h2>
+                                <div class="col-md-4" style="border-left:1px solid #4d4d4d; height:180px">
+                                	<h2 style="font-size:23px; color:#6BAAF9; padding-top:20px" ><?php echo $row['d_name'] ?></h2><br>
+                                    <p style="font-size:14px"><?php echo $row['d_degree'] ?></p>
+                                    <p style="font-size:14px; padding-top:7px"><?php echo $row['d_hospital'] ?></p>
                                 </div>
                                 
-                                <div class="col-md-6">
-                                	<?php echo $row['d_contact']?>
+                                <div class="col-md-5" style="border-left:1px solid #4d4d4d; padding-right:0; height:180px">
+                                	<b><i style="padding-top:20px" class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;Chamber</b>
+                                	<p style="font-size:14px"><?php echo $row['d_chamber']?></p>
+                                    <b><i style="padding-top:7px" class="fa fa-money" aria-hidden="true"></i> &nbsp;&nbsp;Fees</b>
+                                    <p style="font-size:14px">New appointment: <?php echo $row['d_fees_np']?> TK.</p>
+                                </div>
+                                
+                                <div class="col-md-1"><br><br><br>
+                                	<a target="_blank" href="doctor-personal-info.php?id=<?php echo $row['id'] ?>"><button style="font-size:11px;" class="btn btn-success"><i class="fa fa-user-md" aria-hidden="true"></i> View Profile</button></a>
                                 </div>
                             
                             
@@ -304,56 +318,56 @@
 		<!--  End Sent Feedback Section -->		
         
         <!-- Team Section -->
-		<section class="section .team-section-find-doc team-section-two">
-			<div class="container">
-				<div class="row">
-					<div class="section-heading">
-                        <h2 class="section-title"><spam style="color:red">Top 3</spam> Doctors of the Month!</h2>
-					</div>
-				</div>
-
-                <?php
-
-                    $sql2="select * from doctor_info WHERE `d_type` = 'Featured' ORDER BY d_name";
-                    $result2=mysqli_query($con , $sql2);
-
-                ?>
-
-
-				<div class="row">
-					<div class="all-team-members row">
-
-                        <?php
-                            while ($data_row2=mysqli_fetch_array($result2)) {
-                        ?>
-
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-team-member">
-								<div class="member-image">
-									<img src="images/<?php echo $data_row2['d_image'] ?>" alt="" />
-									<div class="round-overlay">	</div>
-									<div class="member-social-link">
-										<a href="#" class="fa fa-facebook" aria-hidden="true"></a>
-										<a href="#" class="fa fa-twitter" aria-hidden="true"></a>
-										<a href="#" class="fa fa-google-plus" aria-hidden="true"></a>
-										<a href="#" class="fa fa-instagram" aria-hidden="true"></a>
-										<a href="#" class="fa fa-behance" aria-hidden="true"></a>
-									</div>
-								</div>
-								<div class="plus-minus-icon">
-									<span class="plus-stick"></span>
-									<span class="minus-stick"></span>
-								</div>
-								<div class="member-info">
-									<h3><a target="_blank" href="doctor-personal-info.php?id=<?php echo $data_row2['id'] ?>"><?php echo $data_row2['d_name'] ?></a></h3>
-									<h4><?php echo $data_row2['d_spciality'] ?> Specialist</h4>
-								</div>
-							</div>
-						</div> <?php } ?>
-					</div>
-				</div>
-			</div>
-		</section>
+<!--		<section class="section .team-section-find-doc team-section-two">-->
+<!--			<div class="container">-->
+<!--				<div class="row">-->
+<!--					<div class="section-heading">-->
+<!--                        <h2 class="section-title"><spam style="color:red">Top 3</spam> Doctors of the Month!</h2>-->
+<!--					</div>-->
+<!--				</div>-->
+<!---->
+<!--                --><?php
+//
+//                    $sql2="select * from doctor_info WHERE `d_type` = 'Featured' ORDER BY d_name DESC ";
+//                    $result2=mysqli_query($con , $sql2);
+//
+//                ?>
+<!---->
+<!---->
+<!--				<div class="row">-->
+<!--					<div class="all-team-members row">-->
+<!---->
+<!--                        --><?php
+//                            while ($data_row2=mysqli_fetch_array($result2)) {
+//                        ?>
+<!---->
+<!--						<div class="col-md-4 col-sm-6 col-xs-12">-->
+<!--							<div class="single-team-member">-->
+<!--								<div class="member-image">-->
+<!--									<img src="images/--><?php //echo $data_row2['d_image'] ?><!--" alt="" />-->
+<!--									<div class="round-overlay">	</div>-->
+<!--									<div class="member-social-link">-->
+<!--										<a href="#" class="fa fa-facebook" aria-hidden="true"></a>-->
+<!--										<a href="#" class="fa fa-twitter" aria-hidden="true"></a>-->
+<!--										<a href="#" class="fa fa-google-plus" aria-hidden="true"></a>-->
+<!--										<a href="#" class="fa fa-instagram" aria-hidden="true"></a>-->
+<!--										<a href="#" class="fa fa-behance" aria-hidden="true"></a>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="plus-minus-icon">-->
+<!--									<span class="plus-stick"></span>-->
+<!--									<span class="minus-stick"></span>-->
+<!--								</div>-->
+<!--								<div class="member-info">-->
+<!--									<h3><a target="_blank" href="doctor-personal-info.php?id=--><?php //echo $data_row2['id'] ?><!--">--><?php //echo $data_row2['d_name'] ?><!--</a></h3>-->
+<!--									<h4>--><?php //echo $data_row2['d_spciality'] ?><!-- Specialist</h4>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div> --><?php //} ?>
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</section>-->
 		<!-- End Team Section -->
 		
 		<!-- Footer section -->	

@@ -113,7 +113,7 @@
         <form action="input.php" method="post" enctype="multipart/form-data">
             Doctor name: <input class="form-control" type="text" name="dname"><br>
             Speciality: <select class="form-control"  name="spec" >
-                <option selected="selected" >Select Speciality</option>
+                <option selected="selected" disabled>Select Speciality</option>
                 <?php
                 include ('connection.php');
                 $sql2="select * from spec ORDER BY spect";
@@ -125,10 +125,26 @@
                 }
                 ?>
             </select><br>
-            Hospital: <input class="form-control" type="text" name="hosp"><br>
+            Doctor Degree: <input class="form-control" type="text" name="d_degree"><br>
+            Short Description: <input class="form-control" type="text" name="d_detail"><br>
+            Hospital: <select class="form-control"  name="hosp" >
+                <option selected="selected" disabled>Select Hospital</option>
+                <?php
+                $sql2="select * from hospital ORDER BY d_hospital";
+                $result2=mysqli_query($con , $sql2);
+                while ($data_row=mysqli_fetch_array($result2))
+                {
+
+                    echo "<option value='".$data_row['d_hospital']."'>".$data_row['d_hospital']."</option>";
+                }
+                ?>
+            </select><br>
+            Chamber: <input class="form-control" type="text" name="d_chamber"><br>
+            Fees (New): <input class="form-control" type="text" name="d_fees_np"> TK.<br>
+            Fees (Return): <input class="form-control" type="text" name="d_fees_rp"> TK.<br>
             Contact Number: <input class="form-control" type="text" name="cnum"><br>
             District: <select class="form-control" name="dst3" id="dst3">
-                <option selected="selected" >Select District</option>
+                <option selected="selected" disabled>Select District</option>
                 <?php
                 $sql3="select * from district ORDER BY d_district";
                 $result3=mysqli_query($con , $sql3);
@@ -146,7 +162,7 @@
 
             </select><br>
             Image: <input class="form-control" type="file" name="d_image"><br>
-            Type: <label class="checkbox-inline"><input type="checkbox" value="Featured" name="type">Featured</label><br><br>
+            Type: <label class="checkbox-inline"><input type="checkbox" value="Featured" name="d_type">Featured</label><br><br>
 
             <input class="btn btn-default" type="submit" name="Submitinfo" value="Submit Doctor">
         </form>
