@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2017 at 08:00 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Mar 02, 2017 at 07:21 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `bddoc24`
@@ -26,13 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(10) NOT NULL,
   `a_name` varchar(50) NOT NULL,
   `a_username` varchar(50) NOT NULL,
-  `a_pass` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `a_pass` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -47,8 +46,8 @@ INSERT INTO `admin` (`id`, `a_name`, `a_username`, `a_pass`) VALUES
 -- Table structure for table `blog`
 --
 
-CREATE TABLE IF NOT EXISTS `blog` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `blog` (
+  `id` int(10) NOT NULL,
   `post_by` varchar(100) DEFAULT NULL,
   `b_title` varchar(10000) DEFAULT NULL,
   `short_note` mediumtext NOT NULL,
@@ -56,9 +55,8 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `category` varchar(100) DEFAULT NULL,
   `f_image` varchar(100) NOT NULL,
   `date` varchar(100) DEFAULT NULL,
-  `time` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `time` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blog`
@@ -77,11 +75,10 @@ INSERT INTO `blog` (`id`, `post_by`, `b_title`, `short_note`, `m_content`, `cate
 -- Table structure for table `district`
 --
 
-CREATE TABLE IF NOT EXISTS `district` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `d_district` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+CREATE TABLE `district` (
+  `id` int(10) NOT NULL,
+  `d_district` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `district`
@@ -95,11 +92,35 @@ INSERT INTO `district` (`id`, `d_district`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doctor_for_appv`
+--
+
+CREATE TABLE `doctor_for_appv` (
+  `id` int(10) NOT NULL,
+  `d_name` varchar(100) DEFAULT NULL,
+  `d_spciality` varchar(100) DEFAULT NULL,
+  `d_degree` varchar(100) DEFAULT NULL,
+  `d_detail` varchar(100) DEFAULT NULL,
+  `d_hospital` varchar(100) DEFAULT NULL,
+  `d_chamber` varchar(100) DEFAULT NULL,
+  `d_fees_np` varchar(100) DEFAULT NULL,
+  `d_fees_rp` varchar(100) DEFAULT NULL,
+  `d_contact` varchar(100) DEFAULT NULL,
+  `d_district` varchar(100) DEFAULT NULL,
+  `d_ps` varchar(100) DEFAULT NULL,
+  `d_image` varchar(100) DEFAULT NULL,
+  `d_type` varchar(100) DEFAULT NULL,
+  `d_status` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctor_info`
 --
 
-CREATE TABLE IF NOT EXISTS `doctor_info` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `doctor_info` (
+  `id` int(10) NOT NULL,
   `d_name` varchar(100) NOT NULL,
   `d_spciality` varchar(100) NOT NULL,
   `d_degree` varchar(500) NOT NULL,
@@ -112,9 +133,8 @@ CREATE TABLE IF NOT EXISTS `doctor_info` (
   `d_district` varchar(100) NOT NULL,
   `d_ps` varchar(100) NOT NULL,
   `d_image` varchar(1000) NOT NULL,
-  `d_type` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+  `d_type` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `doctor_info`
@@ -125,7 +145,11 @@ INSERT INTO `doctor_info` (`id`, `d_name`, `d_spciality`, `d_degree`, `d_detail`
 (39, 'Sakib', 'Heart', '', '', 'National Heart Foundation', '', '0', '', '01672048703', 'Dhaka', 'Mirpur', 'sakib.jpg', 'Featured'),
 (45, 'Tanvir', 'Cardilogy', 'MBBS, FCPS (Surgery), MS (Cardio Vascular & Thoracic surgery)', 'Practicing Cardiac surgery for more than 10 years with excellent outcome. Comfortable in doing Bypass Surgery on beating heart, Valve Surgery, ASD, VSD, PDa, ToOF Surgery. Clinical Fellowship in Cardiac Surgery (NUH , Singapore).', 'Uttara Crisent Hospital', 'House # 21, Road # 15, Sector # 3, Rabindra Smarani', '800', '600', '01924541180', 'Dhaka', 'Uttara', 'tanvir.jpg', 'Featured'),
 (46, 'Monalisa', 'Eye', '', '', 'B. Baria Shadar Hospital', '', '0', '', '01924541180', 'B. Baria', 'Nabinagar', 'monalisa.jpg', ''),
-(49, 'Mr. XYZ', 'Eye', '', '', '', '', '', '', '', '', '', '', 'Featured');
+(49, 'Mr. XYZ', 'Eye', '', '', '', '', '', '', '', '', '', '', 'Featured'),
+(50, 'shamser', 'Cardilogy', 'MBBS', 'none', 'National Heart Foundation', 'mirpur', '500', '400', '01659864563', 'Dhaka', 'Mirpur', '14900406_1023011481155352_4768715051129103434_n.jpg', ''),
+(51, 'shamser', 'Cardilogy', 'MBBS', 'none', 'National Heart Foundation', 'mirpur', '500', '400', '01659864563', 'Dhaka', 'Mirpur', '14900406_1023011481155352_4768715051129103434_n.jpg', ''),
+(52, 'shamser', 'Cardilogy', 'MBBS', 'none', 'National Heart Foundation', 'mirpur', '500', '400', '01659864563', 'Dhaka', 'Mirpur', '14900406_1023011481155352_4768715051129103434_n.jpg', ''),
+(53, 'Sakib', 'ENT', 'MBB FCPS', 'None', 'Uttara Crisent Hospital', 'None', '1000', '500', '00545654536', 'Dhaka', 'Mirpur', '14900406_1023011481155352_4768715051129103434_n.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -133,13 +157,12 @@ INSERT INTO `doctor_info` (`id`, `d_name`, `d_spciality`, `d_degree`, `d_detail`
 -- Table structure for table `hospital`
 --
 
-CREATE TABLE IF NOT EXISTS `hospital` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `hospital` (
+  `id` int(10) NOT NULL,
   `d_hospital` varchar(100) NOT NULL,
   `d_district` varchar(100) NOT NULL,
-  `d_ps` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `d_ps` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hospital`
@@ -153,15 +176,36 @@ INSERT INTO `hospital` (`id`, `d_hospital`, `d_district`, `d_ps`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `newuser`
+--
+
+CREATE TABLE `newuser` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `age` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phonenumber` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `newuser`
+--
+
+INSERT INTO `newuser` (`id`, `name`, `age`, `email`, `phonenumber`) VALUES
+(1, 'sakib', '26', 'md.sakibrahman@gmail.com', '123456'),
+(2, 'Amin', '26', 'md.sakibrahman@gmail.com', '1234567');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pollice_station`
 --
 
-CREATE TABLE IF NOT EXISTS `pollice_station` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pollice_station` (
+  `id` int(10) NOT NULL,
   `d_ps` varchar(50) NOT NULL,
-  `d_district` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `d_district` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pollice_station`
@@ -180,11 +224,10 @@ INSERT INTO `pollice_station` (`id`, `d_ps`, `d_district`) VALUES
 -- Table structure for table `spec`
 --
 
-CREATE TABLE IF NOT EXISTS `spec` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `spect` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+CREATE TABLE `spec` (
+  `id` int(10) NOT NULL,
+  `spect` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `spec`
@@ -196,6 +239,113 @@ INSERT INTO `spec` (`id`, `spect`) VALUES
 (9, 'ENT'),
 (10, 'Cardilogy');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `district`
+--
+ALTER TABLE `district`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `doctor_for_appv`
+--
+ALTER TABLE `doctor_for_appv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `doctor_info`
+--
+ALTER TABLE `doctor_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hospital`
+--
+ALTER TABLE `hospital`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newuser`
+--
+ALTER TABLE `newuser`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pollice_station`
+--
+ALTER TABLE `pollice_station`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `spec`
+--
+ALTER TABLE `spec`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `district`
+--
+ALTER TABLE `district`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `doctor_for_appv`
+--
+ALTER TABLE `doctor_for_appv`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `doctor_info`
+--
+ALTER TABLE `doctor_info`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+--
+-- AUTO_INCREMENT for table `hospital`
+--
+ALTER TABLE `hospital`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `newuser`
+--
+ALTER TABLE `newuser`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `pollice_station`
+--
+ALTER TABLE `pollice_station`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `spec`
+--
+ALTER TABLE `spec`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
